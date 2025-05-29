@@ -11,7 +11,7 @@ RUN repo="deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu220
     && add-apt-repository --remove "$repo" \
     && apt update -y
 
-RUN echo nameserver 8.8.8.8 | sudo tee /etc/resolv.conf
+
 RUN apt-get update -y
 RUN apt-get install -y ca-certificates
 RUN update-ca-certificates
