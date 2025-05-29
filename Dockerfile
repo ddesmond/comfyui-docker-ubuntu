@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.1.1-cudnn8-devel-ubuntu22.04
+FROM nvidia/cuda:12.6.1-cudnn-devel-ubuntu24.04
 
 ENV DEBIAN_FRONTEND=noninteractive \
     TZ=Europe/Zagreb
@@ -7,11 +7,7 @@ ARG USE_PERSISTENT_DATA
 
 RUN apt-get update -y && apt-get install software-properties-common -y
 
-RUN repo="deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64  InRelease" \
-    && add-apt-repository --remove "$repo" \
-    && apt update -y
 
-RUN echo nameserver 8.8.8.8 | sudo tee /etc/resolv.conf
 RUN apt-get update -y
 RUN apt-get install -y ca-certificates
 RUN update-ca-certificates
@@ -19,14 +15,18 @@ RUN apt-get update -y && apt-get install -y \
     nano \
     zip \
     git
-RUN apt-get install -y -t jammy \
+RUN apt-get install -y  \
     make build-essential libssl-dev zlib1g-dev \
     libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
     libncursesw5-dev xz-utils tk-dev libxml2-dev \
     libxmlsec1-dev libffi-dev liblzma-dev git git-lfs  \
-    ffmpeg libsm6 libxext6 cmake libgl1-mesa-glx \
+    ffmpeg libsm6 libxext6 cmake \
     && rm -rf /var/lib/apt/lists/* \
     && git lfs install
+RUN wget http://archive.ubuntu.com/ubuntu/pool/universe/m/mesa/libgl1-mesa-glx_23.0.4-0ubuntu1~22.04.1_amd64.deb \
+    && chmod 777 ./libgl1-mesa-glx_23.0.4-0ubuntu1~22.04.1_amd64.debapt\
+    && apt install ./libgl1-mesa-glx_23.0.4-0ubuntu1~22.04.1_amd64.deb \
+    && apt autoremove
 
 WORKDIR /code
 
