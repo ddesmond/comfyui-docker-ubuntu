@@ -33,10 +33,10 @@ WORKDIR /code
 COPY ./requirements.txt /code/requirements.txt
 COPY ./setup.sh /code/setup.sh
 
-RUN chown 1000:1000 -R /code
+RUN chown 1200:1200 -R /code
 
 # User
-RUN useradd -m --groups users,sudo  -u 1000 user
+RUN useradd -m --groups users,sudo  -u 1200 user
 USER user
 ENV HOME=/home/user \
     PATH=/home/user/.local/bin:$PATH
