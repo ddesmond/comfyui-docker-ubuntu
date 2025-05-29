@@ -4,15 +4,22 @@ ENV DEBIAN_FRONTEND=noninteractive \
     TZ=America/Los_Angeles
 
 ARG USE_PERSISTENT_DATA
+RUN apt-get update -y
+
+RUN repo="deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64  InRelease" \
+    && add-apt-repository --remove "$repo" \
+    && apt update \
+    && apt install whatever \
+    && add-apt-repository "$repo"
 
 RUN apt-get update -y
-RUN apt-get install -y -t jammy ca-certificates
+RUN apt-get install -y ca-certificates
 RUN update-ca-certificates
-RUN apt-get update -y && apt-get install -y -t InRelease \
+RUN apt-get update -y && apt-get install -y \
     nano \
     zip \
     git
-RUN apt-get install -y -t InRelease \
+RUN apt-get install -y -t jammy \
     make build-essential libssl-dev zlib1g-dev \
     libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
     libncursesw5-dev xz-utils tk-dev libxml2-dev \
