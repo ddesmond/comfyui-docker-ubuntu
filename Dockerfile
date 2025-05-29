@@ -17,6 +17,8 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /code
 
 COPY ./requirements.txt /code/requirements.txt
+COPY ./setup.sh /code/setup.sh
+
 RUN chown 1000:1000 -R /code
 
 # User
@@ -44,26 +46,8 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 # Set the working directory to /data if USE_PERSISTENT_DATA is set, otherwise set to $HOME/app
 WORKDIR $HOME/app
 
-# Copy the current directory contents into the container at $HOME/app setting the owner to the user
+RUN bash /code/setup.sh
 
-RUN git clone https://github.com/comfyanonymous/ComfyUI . && git pull && \
-    pip install xformers!=0.0.18 --no-cache-dir -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu121
-
-# Folders setup
-RUN mkdir -p ./models \
-    && mkdir -p ./models/checkpoints/ \
-    && mkdir -p ./models/vae/ \
-    && mkdir -p ./models/controlnet/ \
-    && mkdir -p ./models/style_models/ \
-    && mkdir -p ./models/loras \
-    && mkdir -p ./models/controlnet/ \
-    && mkdir -p ./models/clip_vision \
-    && mkdir -p ./models/gligen/ \
-    && mkdir -p  ./models/upscale_models/
-
-WORKDIR $HOME/app
-RUN mkdir -p  custom_nodes \
-    && ls -la $HOME/app
 # Checkpoints
 
 RUN echo "Downloading checkpoints..."
@@ -152,8 +136,6 @@ WORKDIR $HOME/app
 RUN ls -la .
 # comfyui manager
 #RUN cd custom_nodes && git clone https://github.com/ltdrdata/ComfyUI-Manager comfyui-manager && cd comfyui-manager && pip install -r requirements.txt
-
-RUN ls -la custom_nodes
 # Controlnet Preprocessor nodes by Fannovel16
 # RUN cd custom_nodes && git clone https://github.com/Fannovel16/comfy_controlnet_preprocessors && cd comfy_controlnet_preprocessors && python install.py --no_download_ckpts
 #RUN cd custom_nodes && git clone https://github.com/Fannovel16/comfyui_controlnet_aux && cd comfyui_controlnet_aux && pip install -r requirements.txt
