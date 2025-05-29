@@ -63,7 +63,7 @@ RUN mkdir -p ./models \
 
 WORKDIR $HOME/app
 RUN mkdir -p  custom_nodes \
-    ls -la $HOME/app
+    && ls -la $HOME/app
 # Checkpoints
 
 RUN echo "Downloading checkpoints..."
