@@ -5,14 +5,14 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 ARG USE_PERSISTENT_DATA
 
-RUN apt-get update -y jammy InRelease
-RUN apt-get install -y ca-certificates jammy InRelease
+RUN apt-get update -y
+RUN apt-get install -y jammy ca-certificates
 RUN update-ca-certificates
-RUN apt-get update -y && apt-get install -y jammy InRelease \
+RUN apt-get update -y && apt-get install -y jammy \
     nano \
     zip \
     git
-RUN apt-get install -y jammy InRelease \
+RUN apt-get install -y jammy \
     make build-essential libssl-dev zlib1g-dev \
     libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
     libncursesw5-dev xz-utils tk-dev libxml2-dev \
