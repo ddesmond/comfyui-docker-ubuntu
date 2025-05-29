@@ -57,20 +57,12 @@ RUN pyenv install $PYTHON_VERSION && \
 
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
-# Set the working directory to /data if USE_PERSISTENT_DATA is set, otherwise set to $HOME/app
-WORKDIR $HOME/app
+# Set the working directory to /data mounted from docker compose
+WORKDIR /data
 
 RUN bash /code/setup.sh
 
-# Checkpoints
 
 RUN echo "Done"
 
-# instal custom nodes
-RUN echo "Installing custom nodes..."
-WORKDIR $HOME/app
-RUN ls -la .
-
-RUN echo "Done"
-
-CMD ["python", "main.py", "--listen", "0.0.0.0", "--port", "7860", "--output-directory", "${HOME:+/data/}"]
+CMD ["python", "main.py", "--listen", "0.0.0.0", "--port", "7860", "--output-directory", "/data/"]

@@ -1,10 +1,9 @@
 #!/bin/bash
 
 #SETUP COMFYUI
-# Copy the current directory contents into the container at $HOME/app setting the owner to the user
-cd $HOME/app
 
-git clone https://github.com/comfyanonymous/ComfyUI . && git pull
+git clone https://github.com/comfyanonymous/ComfyUI .
+git pull
 pip install xformers!=0.0.18 --no-cache-dir -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu121
 
 
@@ -21,7 +20,8 @@ mkdir -p ./models \
 && mkdir -p ./models/gligen/ \
 && mkdir -p ./models/upscale_models
 
-mkdir -p custom_nodes && ls -la $HOME/app
+mkdir -p custom_nodes
+ls -la .
 
 cd custom_nodes
 git clone https://github.com/ltdrdata/ComfyUI-Manager comfyui-manager
