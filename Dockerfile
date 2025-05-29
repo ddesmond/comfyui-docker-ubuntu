@@ -8,9 +8,8 @@ RUN apt-get update -y
 
 RUN repo="deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64  InRelease" \
     && add-apt-repository --remove "$repo" \
-    && apt update \
-    && apt install whatever \
-    && add-apt-repository "$repo"
+    && apt update -y
+
 
 RUN apt-get update -y
 RUN apt-get install -y ca-certificates
