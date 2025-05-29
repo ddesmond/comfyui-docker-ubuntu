@@ -5,8 +5,8 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 ARG USE_PERSISTENT_DATA
 
-RUN apt-get update -y
-RUN apt-get install -y ca-certificates
+RUN apt-get update -y jammy InRelease
+RUN apt-get install -y ca-certificates jammy InRelease
 RUN update-ca-certificates
 RUN apt-get update -y && apt-get install -y jammy InRelease \
     nano \
