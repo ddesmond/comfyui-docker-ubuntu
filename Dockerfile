@@ -149,4 +149,4 @@ RUN ls -la custom_nodes
 
 RUN echo "Done"
 
-CMD ["python", "main.py", "--listen", "0.0.0.0", "--port", "7860", "--output-directory", "${USE_PERSISTENT_DATA:+/data/}"]
+CMD ["python", "main.py", "--listen", "0.0.0.0", "--port", "7860", "--output-directory", "${HOME:+/data/}"]
