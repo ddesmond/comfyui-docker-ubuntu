@@ -33,8 +33,8 @@ Ensure you have the following installed:
 1. **Clone the repository** and navigate to the project root:
 
    ```bash
-   git clone https://github.com/krasamo/comfyui-docker.git
-   cd https://github.com/krasamo/comfyui-docker.git
+   git clone https://github.com/ddesmond/comfyui-docker-ubuntu.git
+   cd https://github.com/ddesmond/comfyui-docker-ubuntu.git
    ```
 
 2. **Build the Docker image**:
@@ -67,11 +67,6 @@ This will store outputs and models in `/data` on the host machine, ensuring that
 
 ## 🧠 Included AI Models
 
-This Docker setup automatically downloads several pre-trained models from Hugging Face, including:
-
-- **Stable Diffusion XL**: High-quality text-to-image models.
-- **ControlNet**: Pretrained models for image control.
-- **ESRGAN**: For super-resolution upscaling.
 
 Refer to the Dockerfile for the exact models included and their paths.
 
@@ -83,13 +78,8 @@ Refer to the Dockerfile for the exact models included and their paths.
 
 ## 🛠️ How to Add Custom Models
 
-You can add custom models by modifying the `Dockerfile` and adding additional `wget` commands to download models or use external repositories.
+You can add custom models by modifying the `downloads.sh` and adding additional `wget` commands to download models or use external repositories.
 
-For example, add the following to download a custom checkpoint:
-
-```bash
-RUN wget -c <model-url> -P ./models/checkpoints/
-```
 
 ## 📜 License
 
