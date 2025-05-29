@@ -136,6 +136,7 @@ RUN echo "Installing custom nodes..."
 
 # comfyui manager
 RUN cd custom_nodes && git clone https://github.com/ltdrdata/ComfyUI-Manager comfyui-manager && cd comfyui-manager && pip install -r requirements.txt
+
 RUN ls -la custom_nodes
 # Controlnet Preprocessor nodes by Fannovel16
 # RUN cd custom_nodes && git clone https://github.com/Fannovel16/comfy_controlnet_preprocessors && cd comfy_controlnet_preprocessors && python install.py --no_download_ckpts
