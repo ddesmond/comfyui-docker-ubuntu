@@ -5,10 +5,9 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 ARG USE_PERSISTENT_DATA
 
-RUN apt-get update -y \
-RUN apt-get install -y \
-    ca-certificates \
-RUN update-ca-certificates  \
+RUN apt-get update -y
+RUN apt-get install -y ca-certificates
+RUN update-ca-certificates
 RUN apt-get update -y && apt-get install -y \
     nano \
     zip \
