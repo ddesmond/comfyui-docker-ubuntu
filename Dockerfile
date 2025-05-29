@@ -1,10 +1,11 @@
 FROM nvidia/cuda:12.1.1-cudnn8-devel-ubuntu22.04
 
 ENV DEBIAN_FRONTEND=noninteractive \
-    TZ=America/Los_Angeles
+    TZ=Europe/Zagreb
 
 ARG USE_PERSISTENT_DATA
-RUN apt-get update -y
+
+RUN apt-get update -y && apt-get install software-properties-common -y
 
 RUN repo="deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64  InRelease" \
     && add-apt-repository --remove "$repo" \
