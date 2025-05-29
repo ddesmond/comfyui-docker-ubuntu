@@ -49,6 +49,21 @@ WORKDIR $HOME/app
 RUN git clone https://github.com/comfyanonymous/ComfyUI . && git pull && \
     pip install xformers!=0.0.18 --no-cache-dir -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu121
 
+# Folders setup
+RUN mkdir -p ./models \
+    && mkdir -p ./models/checkpoints/ \
+    && mkdir -p ./models/vae/ \
+    && mkdir -p ./models/controlnet/ \
+    && mkdir -p ./models/style_models/ \
+    && mkdir -p ./models/loras \
+    && mkdir -p ./models/controlnet/ \
+    && mkdir -p ./models/clip_vision \
+    && mkdir -p ./models/gligen/ \
+    && mkdir -p  ./models/upscale_models/
+
+WORKDIR $HOME/app
+RUN mkdir -p  custom_nodes \
+    ls -la $HOME/app
 # Checkpoints
 
 RUN echo "Downloading checkpoints..."
