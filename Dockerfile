@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.6.1-base-ubuntu24.04
+FROM nvidia/cuda:12.1.1-cudnn8-devel-ubuntu22.04
 
 ENV DEBIAN_FRONTEND=noninteractive \
     TZ=Europe/Zagreb
@@ -11,7 +11,7 @@ RUN repo="deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu220
     && add-apt-repository --remove "$repo" \
     && apt update -y
 
-
+RUN echo nameserver 8.8.8.8 | sudo tee /etc/resolv.conf
 RUN apt-get update -y
 RUN apt-get install -y ca-certificates
 RUN update-ca-certificates
@@ -19,7 +19,7 @@ RUN apt-get update -y && apt-get install -y \
     nano \
     zip \
     git
-RUN apt-get install -y \
+RUN apt-get install -y -t jammy \
     make build-essential libssl-dev zlib1g-dev \
     libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
     libncursesw5-dev xz-utils tk-dev libxml2-dev \
