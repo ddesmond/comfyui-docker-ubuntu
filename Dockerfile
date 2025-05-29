@@ -58,7 +58,7 @@ RUN pyenv install $PYTHON_VERSION && \
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 # Set the working directory to /data mounted from docker compose
-WORKDIR /data
+WORKDIR $HOME/app
 
 RUN bash /code/setup.sh
 
