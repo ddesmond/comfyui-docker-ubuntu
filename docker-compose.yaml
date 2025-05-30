@@ -16,3 +16,4 @@ services:
               capabilities: [gpu]
     volumes:
         - ./data:/data
+        - ./app:/home/user
