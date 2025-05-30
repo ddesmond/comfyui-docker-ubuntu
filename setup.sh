@@ -8,9 +8,10 @@ pip install xformers!=0.0.18 --no-cache-dir -r requirements.txt --extra-index-ur
 ls -la .
 
 # folders
-
+ln -s /data/models /home/user/app
+ln -s /data/custom_nodes /home/user/app
 # Folders setup
-
+cd /data
 mkdir -p ./models \
 && mkdir -p ./models/checkpoints/ \
 && mkdir -p ./models/vae/ \
