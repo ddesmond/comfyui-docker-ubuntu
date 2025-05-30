@@ -29,7 +29,7 @@ RUN apt-get install -y  \
 RUN wget http://archive.ubuntu.com/ubuntu/pool/universe/m/mesa/libgl1-mesa-glx_23.0.4-0ubuntu1~22.04.1_amd64.deb \
     && chmod 777 ./libgl1-mesa-glx_23.0.4-0ubuntu1~22.04.1_amd64.deb \
     && apt install ./libgl1-mesa-glx_23.0.4-0ubuntu1~22.04.1_amd64.deb \
-    && apt autoremove
+    && apt autoremove -y
 
 WORKDIR /code
 
