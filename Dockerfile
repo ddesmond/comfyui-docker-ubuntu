@@ -7,12 +7,6 @@ ARG USE_PERSISTENT_DATA
 
 RUN apt-get update -y && apt-get install software-properties-common -y
 
-RUN repo="deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64  InRelease" \
-    && add-apt-repository --remove "$repo" \
-    && apt update -y
-
-
-RUN apt-get update -y
 RUN apt-get install -y ca-certificates
 RUN update-ca-certificates
 RUN apt-get update -y && apt-get install -y \
