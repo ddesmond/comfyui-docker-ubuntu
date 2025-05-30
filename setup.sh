@@ -24,8 +24,9 @@ git clone https://github.com/comfyanonymous/ComfyUI .
 git pull
 
 # folders
-ln -sf /data/models /home/user/app
 rm -rf models/
+sudo ln -sf /data/models /home/user/app
+
 
 pip install xformers!=0.0.18 --no-cache-dir -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu121
 ls -la .
