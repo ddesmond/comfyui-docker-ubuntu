@@ -7,7 +7,7 @@ ARG USE_PERSISTENT_DATA
 
 RUN apt-get update -y
 
-RUN apt-get install -y software-properties-common
+RUN apt-get install -y software-properties-common --fix-missing
 
 RUN apt-get install -y ca-certificates
 RUN update-ca-certificates
