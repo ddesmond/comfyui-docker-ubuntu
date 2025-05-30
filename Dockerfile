@@ -10,11 +10,11 @@ RUN apt-get update -y
 RUN apt-get install -y ca-certificates
 RUN update-ca-certificates
 
-RUN apt-get update -y && apt-get install -y \
+RUN apt-get update -y && apt-get install -y --fix-missing \
     nano \
     zip \
     git
-RUN apt-get install -y  \
+RUN apt-get install -y --fix-missing \
     make build-essential libssl-dev zlib1g-dev \
     libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
     libncursesw5-dev xz-utils tk-dev libxml2-dev \
@@ -24,7 +24,7 @@ RUN apt-get install -y  \
     && git lfs install
 RUN wget http://archive.ubuntu.com/ubuntu/pool/universe/m/mesa/libgl1-mesa-glx_23.0.4-0ubuntu1~22.04.1_amd64.deb \
     && chmod 777 ./libgl1-mesa-glx_23.0.4-0ubuntu1~22.04.1_amd64.deb \
-    && apt install ./libgl1-mesa-glx_23.0.4-0ubuntu1~22.04.1_amd64.deb \
+    && apt install ./libgl1-mesa-glx_23.0.4-0ubuntu1~22.04.1_amd64.deb --fix-missing \
     && apt autoremove -y
 
 WORKDIR /code
