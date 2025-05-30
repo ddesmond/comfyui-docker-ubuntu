@@ -2,7 +2,7 @@
 
 
 # folder setup
-mkdir /data && chmod -R 777 /data
+sudo mkdir /data && chmod -R 777 /data
 cd /data
 mkdir -p ./models \
 && mkdir -p ./models/checkpoints/ \
