@@ -18,7 +18,7 @@ ls -la .
 
 
 #SETUP COMFYUI
-
+cd /home/user/app
 git clone https://github.com/comfyanonymous/ComfyUI .
 git pull
 
