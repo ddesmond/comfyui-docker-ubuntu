@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SETUP COMFYUI
-cd /home/user/app
+cd $HOME/app
 git clone https://github.com/comfyanonymous/ComfyUI .
 git pull
 
@@ -18,12 +18,12 @@ mkdir -p ./models \
 && mkdir -p ./models/gligen/ \
 && mkdir -p ./models/upscale_models \
 && mkdir -p custom_nodes
-ls -la .
+ls -la /data/
 
-cd /home/user/app
+cd $HOME/app
 # folders relink
 rm -rf models/
-sudo ln -sf /data/models /home/user/app
+ln -sf /data/models /home/user/app
 
 
 pip install xformers!=0.0.18 --no-cache-dir -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu121

@@ -13,16 +13,15 @@ COPY ./deps.sh /code/deps.sh
 COPY ./requirements.txt /code/requirements.txt
 COPY ./setup.sh /code/setup.sh
 
-RUN chown 1200:1200 -R /code
+
 
 # Deps install
 RUN chmod +x /code/deps.sh && bash /code/deps.sh
 
 # User
-RUN useradd -m --groups users,sudo  -u 1200 user
-USER user
-ENV HOME=/home/user \
-    PATH=/home/user/.local/bin:$PATH
+
+ENV HOME=/root \
+    PATH=/root/.local/bin:$PATH
 
 # Pyenv
 RUN curl https://pyenv.run | bash

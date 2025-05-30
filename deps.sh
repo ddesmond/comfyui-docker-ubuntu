@@ -5,7 +5,7 @@ apt-get install -y ca-certificates --fix-missing
 update-ca-certificates
 apt-get install -y \
     nano zip \
-    git git-lfs wget curl sudo screen \
+    git git-lfs wget curl screen \
     --fix-missing
 
 apt-get install -y \
