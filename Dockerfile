@@ -10,7 +10,7 @@ RUN apt-get update -y
 RUN apt-get install -y ca-certificates --fix-missing
 RUN update-ca-certificates
 
-RUN apt-get update -y && apt-get install -y \
+RUN apt-get install -y \
     nano \
     zip \
     git git-lfs wget curl sudo screen --fix-missing
