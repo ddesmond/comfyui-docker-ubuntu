@@ -1,8 +1,12 @@
 #!/bin/bash
 
 
+#SETUP COMFYUI
+cd /home/user/app
+git clone https://github.com/comfyanonymous/ComfyUI .
+git pull
+
 # folder setup
-sudo mkdir /data && chmod -R 777 /data
 cd /data
 mkdir -p ./models \
 && mkdir -p ./models/checkpoints/ \
@@ -17,13 +21,8 @@ mkdir -p ./models \
 && mkdir -p custom_nodes
 ls -la .
 
-
-#SETUP COMFYUI
 cd /home/user/app
-git clone https://github.com/comfyanonymous/ComfyUI .
-git pull
-
-# folders
+# folders relink
 rm -rf models/
 sudo ln -sf /data/models /home/user/app
 

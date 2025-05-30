@@ -13,22 +13,29 @@ RUN update-ca-certificates
 RUN apt-get update -y && apt-get install -y --fix-missing \
     nano \
     zip \
-    git
+    git git-lfs wget curl sudo screen
+
 RUN apt-get install -y --fix-missing \
-    make build-essential libssl-dev zlib1g-dev
+    make build-essential libssl-dev zlib1g-dev \
+
 RUN apt-get install -y --fix-missing \
-    libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm
+    libbz2-dev libreadline-dev libsqlite3-dev llvm \
+
 RUN apt-get install -y --fix-missing \
-    libncursesw5-dev xz-utils tk-dev libxml2-dev
+    libncursesw5-dev xz-utils tk-dev libxml2-dev \
+
 RUN apt-get install -y --fix-missing \
-    libxmlsec1-dev libffi-dev liblzma-dev git git-lfs  \
+    libxmlsec1-dev libffi-dev liblzma-dev \
     ffmpeg libsm6 libxext6 cmake
-RUN git lfs install
+
 RUN wget http://archive.ubuntu.com/ubuntu/pool/universe/m/mesa/libgl1-mesa-glx_23.0.4-0ubuntu1~22.04.1_amd64.deb \
     && chmod 777 ./libgl1-mesa-glx_23.0.4-0ubuntu1~22.04.1_amd64.deb \
     && apt install ./libgl1-mesa-glx_23.0.4-0ubuntu1~22.04.1_amd64.deb --fix-missing \
     && apt autoremove -y
 
+RUN git lfs install
+
+RUN mkdir -p /data && chmod -R 777 /data
 WORKDIR /code
 
 COPY ./requirements.txt /code/requirements.txt
