@@ -5,43 +5,18 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 ARG USE_PERSISTENT_DATA
 
-RUN apt-get update -y
-
-RUN apt-get install -y ca-certificates --fix-missing
-RUN update-ca-certificates
-
-RUN apt-get install -y \
-    nano \
-    zip \
-    git git-lfs wget curl sudo screen --fix-missing
-
-RUN apt-get install -y  \
-    make build-essential libssl-dev zlib1g-dev --fix-missing
-
-RUN apt-get install -y --fix-missing \
-    libbz2-dev libreadline-dev libsqlite3-dev llvm --fix-missing
-
-RUN apt-get install -y --fix-missing \
-    libncursesw5-dev xz-utils tk-dev libxml2-dev --fix-missing
-
-RUN apt-get install -y --fix-missing \
-    libxmlsec1-dev libffi-dev liblzma-dev \
-    ffmpeg libsm6 libxext6 cmake --fix-missing
-
-RUN wget http://archive.ubuntu.com/ubuntu/pool/universe/m/mesa/libgl1-mesa-glx_23.0.4-0ubuntu1~22.04.1_amd64.deb \
-    && chmod 777 ./libgl1-mesa-glx_23.0.4-0ubuntu1~22.04.1_amd64.deb \
-    && apt install ./libgl1-mesa-glx_23.0.4-0ubuntu1~22.04.1_amd64.deb --fix-missing \
-    && apt autoremove -y
-
-RUN git lfs install
 
 RUN mkdir -p /data && chmod -R 777 /data
-WORKDIR /code
 
+WORKDIR /code
+COPY ./deps.sh /code/deps.sh
 COPY ./requirements.txt /code/requirements.txt
 COPY ./setup.sh /code/setup.sh
 
 RUN chown 1200:1200 -R /code
+
+# Deps install
+RUN chmod +x /code/deps.sh && bash /code/deps.sh
 
 # User
 RUN useradd -m --groups users,sudo  -u 1200 user
@@ -54,6 +29,7 @@ RUN curl https://pyenv.run | bash
 ENV PATH=$HOME/.pyenv/shims:$HOME/.pyenv/bin:$PATH
 
 ARG PYTHON_VERSION=3.10.12
+
 # Python
 RUN pyenv install $PYTHON_VERSION && \
     pyenv global $PYTHON_VERSION && \
@@ -68,6 +44,7 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 # Set the working directory to /data mounted from docker compose
 WORKDIR $HOME/app
 
+# deploy comfy code
 RUN bash /code/setup.sh
 
 

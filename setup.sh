@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 #SETUP COMFYUI
 cd /home/user/app
 git clone https://github.com/comfyanonymous/ComfyUI .
