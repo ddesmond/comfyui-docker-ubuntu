@@ -16,7 +16,8 @@ COPY ./setup.sh /code/setup.sh
 
 
 # Deps install
-RUN chmod +x /code/deps.sh && bash /code/deps.sh
+RUN chmod +x /code/deps.sh
+RUN bash /code/deps.sh
 
 # User
 
