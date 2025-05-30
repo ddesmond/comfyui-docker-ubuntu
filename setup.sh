@@ -2,6 +2,7 @@
 
 
 # folder setup
+mkdir /data && chmod -R 777 /data
 cd /data
 mkdir -p ./models \
 && mkdir -p ./models/checkpoints/ \
@@ -22,18 +23,12 @@ cd /home/user/app
 git clone https://github.com/comfyanonymous/ComfyUI .
 git pull
 
-rm -rf models/
-rm -rf custom_nodes/
-
 # folders
 ln -sf /data/models /home/user/app
-ln -sf /data/custom_nodes /home/user/app
-# Folders setup
-cd /data
+rm -rf models/
 
 pip install xformers!=0.0.18 --no-cache-dir -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu121
 ls -la .
-
 
 
 cd custom_nodes
