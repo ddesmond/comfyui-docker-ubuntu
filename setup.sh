@@ -5,10 +5,12 @@
 git clone https://github.com/comfyanonymous/ComfyUI .
 git pull
 pip install xformers!=0.0.18 --no-cache-dir -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu121
-
+ls -la .
 
 # folders
+
 # Folders setup
+
 mkdir -p ./models \
 && mkdir -p ./models/checkpoints/ \
 && mkdir -p ./models/vae/ \
