@@ -10,23 +10,23 @@ RUN apt-get update -y
 RUN apt-get install -y ca-certificates --fix-missing
 RUN update-ca-certificates
 
-RUN apt-get update -y && apt-get install -y --fix-missing \
+RUN apt-get update -y && apt-get install -y \
     nano \
     zip \
-    git git-lfs wget curl sudo screen
+    git git-lfs wget curl sudo screen --fix-missing
+
+RUN apt-get install -y  \
+    make build-essential libssl-dev zlib1g-dev --fix-missing
 
 RUN apt-get install -y --fix-missing \
-    make build-essential libssl-dev zlib1g-dev \
+    libbz2-dev libreadline-dev libsqlite3-dev llvm --fix-missing
 
 RUN apt-get install -y --fix-missing \
-    libbz2-dev libreadline-dev libsqlite3-dev llvm \
-
-RUN apt-get install -y --fix-missing \
-    libncursesw5-dev xz-utils tk-dev libxml2-dev \
+    libncursesw5-dev xz-utils tk-dev libxml2-dev --fix-missing
 
 RUN apt-get install -y --fix-missing \
     libxmlsec1-dev libffi-dev liblzma-dev \
-    ffmpeg libsm6 libxext6 cmake
+    ffmpeg libsm6 libxext6 cmake --fix-missing
 
 RUN wget http://archive.ubuntu.com/ubuntu/pool/universe/m/mesa/libgl1-mesa-glx_23.0.4-0ubuntu1~22.04.1_amd64.deb \
     && chmod 777 ./libgl1-mesa-glx_23.0.4-0ubuntu1~22.04.1_amd64.deb \
