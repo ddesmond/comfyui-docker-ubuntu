@@ -12,6 +12,7 @@ COPY ./deps.sh /code/deps.sh
 COPY ./requirements.txt /code/requirements.txt
 COPY ./setup.sh /code/setup.sh
 COPY ./debug.sh /code/debug.sh
+COPY ./run_comfyui.sh /code/run_comfyui.sh
 COPY ./startup.sh /code/startup.sh
 COPY ./folder_setup.sh /code/folder_setup.sh
 COPY ./.comfyui-init /.comfyui-init
@@ -21,6 +22,7 @@ COPY ./extra_models_paths.yaml /code/extra_models_paths.yaml
 RUN chmod +x /code/debug.sh
 RUN chmod +x /code/startup.sh
 RUN chmod +x /code/deps.sh
+RUN chmod +x /code/run_comfyui.sh
 
 # Deps
 RUN bash /code/deps.sh

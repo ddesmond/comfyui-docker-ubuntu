@@ -1,16 +1,23 @@
 comfyui:
      base_path: /data/
-     is_default: true
      checkpoints: models/checkpoints/
      clip: models/clip/
+     clip_interrogator: models/clip_interrogator/
      clip_vision: models/clip_vision/
      configs: models/configs/
      controlnet: models/controlnet/
-     diffusion_models: |
-                  models/diffusion_models
-                  models/unet
+     diffusers: models/diffusers/
+     diffusion_models: models/diffusion_models/
      embeddings: models/embeddings/
+     gligen: models/gligen/
+     hypernetworks: models/hypernetworks/
+     LLM: models/LLM/
+     llm_gguf: models/llm_gguf/
      loras: models/loras/
+     photomaker: models/photomaker/
+     style_models: models/style_models/
+     unet: models/unet/
      upscale_models: models/upscale_models/
      vae: models/vae/
+     vae_approx: models/vae_approx/
      custom_nodes: custom_nodes/

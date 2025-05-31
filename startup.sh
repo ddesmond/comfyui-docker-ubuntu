@@ -3,8 +3,9 @@ echo "_____ STARTUP _____"
 if [ -e /.comfyui-init ]; then
   bash /code/setup.sh
   bash /code/folder_setup.sh
+  bash /code/run_comfyui.sh
 else
-  python main.py --listen 0.0.0.0 --port 7860 --output-directory /data/
+  bash /code/run_comfyui.sh
 fi
 
 

@@ -5,6 +5,8 @@ cd $HOME/app
 git clone https://github.com/comfyanonymous/ComfyUI .
 git pull
 
+cp -r /code/extra_models_paths.yaml .
+pip install --no-cache-dir -r requirements.txt
 
 cd $HOME/app
 # folders relink
@@ -18,7 +20,14 @@ ls -la .
 
 cd custom_nodes
 git clone https://github.com/ltdrdata/ComfyUI-Manager comfyui-manager
+
 cd comfyui-manager
 pip install -r requirements.txt
-cp -r /code/extra_models_paths.yaml .
+
+
+# edit security config
+cd $HOME/app
+sed -i "s@normal@weak@g" user/default/ComfyUI-Manager/config.ini
+cat user/default/ComfyUI-Manager/config.ini
+
 rm -rf /.comfyui-init

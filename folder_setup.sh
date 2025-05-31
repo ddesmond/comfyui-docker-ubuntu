@@ -17,11 +17,12 @@ mkdir -p ./models \
 && mkdir -p ./models/photomaker/ \
 && mkdir -p ./models/style_models \
 && mkdir -p ./models/text_encoders \
-&& mkdir -p ./models/text_encoders \
+&& mkdir -p ./models/LLM \
 && mkdir -p ./models/unet \
 && mkdir -p ./models/upscale_models \
 && mkdir -p ./models/vae \
-&& mkdir -p ./models/vae_approx \
+&& mkdir -p ./models/vae_approx
 chmod -R 777 /data
 chmod -R 777 /data/models
 ls -la /data/
+ls -la /data/models
