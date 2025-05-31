@@ -5,7 +5,8 @@ cd $HOME/app
 git clone https://github.com/comfyanonymous/ComfyUI .
 git pull
 
-cp -r /code/extra_models_paths.yaml .
+cp -f /setup/extra_models_paths.yaml $HOME/app/extra_models_paths.yaml && chmod 777 $HOME/app/extra_models_paths.yaml
+
 pip install --no-cache-dir -r requirements.txt
 
 cd $HOME/app
@@ -27,7 +28,7 @@ pip install -r requirements.txt
 
 # edit security config
 cd $HOME/app
-sed -i "s@normal@weak@g" user/default/ComfyUI-Manager/config.ini
-cat user/default/ComfyUI-Manager/config.ini
+sed -i "s@normal@weak@g" $HOME/app/user/default/ComfyUI-Manager/config.ini
+cat $HOME/app/user/default/ComfyUI-Manager/config.ini
 
 rm -rf /.comfyui-init

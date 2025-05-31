@@ -7,25 +7,22 @@ ARG USE_PERSISTENT_DATA
 
 RUN mkdir -p /data && chmod -R 777 /data
 
-WORKDIR /code
-COPY ./deps.sh /code/deps.sh
-COPY ./requirements.txt /code/requirements.txt
-COPY ./setup.sh /code/setup.sh
-COPY ./debug.sh /code/debug.sh
-COPY ./run_comfyui.sh /code/run_comfyui.sh
-COPY ./startup.sh /code/startup.sh
-COPY ./folder_setup.sh /code/folder_setup.sh
-COPY ./.comfyui-init /.comfyui-init
-COPY ./extra_models_paths.yaml /code/extra_models_paths.yaml
+WORKDIR /setup
+COPY ./setup/deps.sh /setup/deps.sh
+COPY ./setup/requirements.txt /setup/requirements.txt
+COPY ./setup/setup.sh /setup/setup.sh
+COPY ./setup/debug.sh /setup/debug.sh
+COPY ./setup/run_comfyui.sh /setup/run_comfyui.sh
+COPY ./setup/startup.sh /setup/startup.sh
+COPY ./setup/folder_setup.sh /setup/folder_setup.sh
+COPY ./setup/.comfyui-init /.comfyui-init
+COPY ./setup/extra_models_paths.yaml /setup/extra_models_paths.yaml
 
 # Copy
-RUN chmod +x /code/debug.sh
-RUN chmod +x /code/startup.sh
-RUN chmod +x /code/deps.sh
-RUN chmod +x /code/run_comfyui.sh
+RUN chmod +R /setup/*.sh
 
 # Deps
-RUN bash /code/deps.sh
+RUN bash /setup/deps.sh
 
 # ENV
 ENV HOME=/root \
@@ -53,10 +50,5 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 WORKDIR $HOME/app
 
 RUN echo "Done."
-ENV HF_TOKEN="" \
-    HF_ENDPOINT="https://huggingface.co" \
-    HF_HUB_ENABLE_HF_TRANSFER=true \
-    HF_HUB_ENABLE_HF_TRANSFER_NO_AUTH=true \
-    HF_HUB_DOWNLOAD_TIMEOUT=60
 
-CMD ["bash","/code/startup.sh"]
+CMD ["bash","/setup/startup.sh"]
