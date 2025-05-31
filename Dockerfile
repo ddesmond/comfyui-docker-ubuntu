@@ -13,7 +13,9 @@ COPY ./requirements.txt /code/requirements.txt
 COPY ./setup.sh /code/setup.sh
 COPY ./debug.sh /code/debug.sh
 COPY ./startup.sh /code/startup.sh
+COPY ./folder_setup.sh /code/folder_setup.sh
 COPY ./.comfyui-init /.comfyui-init
+COPY ./extra_models_paths.yaml /code/extra_models_paths.yaml
 
 # Copy
 RUN chmod +x /code/debug.sh

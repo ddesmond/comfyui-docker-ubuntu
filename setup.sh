@@ -20,5 +20,5 @@ cd custom_nodes
 git clone https://github.com/ltdrdata/ComfyUI-Manager comfyui-manager
 cd comfyui-manager
 pip install -r requirements.txt
-
+cp -r /code/extra_models_paths.yaml .
 rm -rf /.comfyui-init
