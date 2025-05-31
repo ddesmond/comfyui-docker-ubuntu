@@ -26,3 +26,6 @@ chmod -R 777 /data
 chmod -R 777 /data/models
 ls -la /data/
 ls -la /data/models
+
+echo "Folders created in /data/models"
+echo "-------------------------------"

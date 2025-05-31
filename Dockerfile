@@ -15,6 +15,7 @@ COPY ./setup/debug.sh /setup/debug.sh
 COPY ./setup/run_comfyui.sh /setup/run_comfyui.sh
 COPY ./setup/startup.sh /setup/startup.sh
 COPY ./setup/folder_setup.sh /setup/folder_setup.sh
+COPY ./setup/downloads.sh /setup/downloads.sh
 COPY ./setup/.comfyui-init /.comfyui-init
 COPY ./setup/extra_models_paths.yaml /setup/extra_models_paths.yaml
 
@@ -44,7 +45,7 @@ RUN pyenv install $PYTHON_VERSION && \
     huggingface-hub "protobuf<4" "click<8.1"
 
 # Install Python dependencies
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /setup/requirements.txt
 
 # Set the working directory to /data mounted from docker compose
 WORKDIR $HOME/app
