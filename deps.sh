@@ -1,30 +1,23 @@
 #!/bin/bash
 
 dnf update -y
-dnf install -y ca-certificates --fix-missing
-update-ca-certificates
+dnf upgrade --refresh -y
+
+dnf install -y dnf-plugins-core
+dnf config-manager --set-enabled crb
+dnf install -y epel-release
+
+dnf update -y
+
 dnf install -y \
     nano zip \
-    git git-lfs wget curl screen \
-    --fix-missing
+    git git-lfs wget curl mlocate --allowerasing
 
-dnf install -y \
-    make build-essential libssl-dev zlib1g-dev \
-    --fix-missing
+dnf install  -y \
+  make gcc patch zlib-devel bzip2 bzip2-devel \
+  readline-devel sqlite sqlite-devel openssl-devel \
+  tk-devel libffi-devel xz-devel libuuid-devel gdbm-libs libnsl2
 
-dnf install -y \
-    libbz2-dev libreadline-dev \
-    libsqlite3-dev llvm --fix-missing
-
-dnf install -y \
-    libncursesw5-dev xz-utils tk-dev libxml2-dev \
-    --fix-missing
-
-dnf install -y \
-    libxmlsec1-dev libffi-dev liblzma-dev \
-    ffmpeg libsm6 libxext6 \
-    cmake \
-    --fix-missing
-
-
-git lfs install
+updatedb
+locate git | grep bin
+/usr/bin/git lfs install
