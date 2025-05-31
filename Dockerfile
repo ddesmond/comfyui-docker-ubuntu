@@ -1,10 +1,9 @@
-FROM nvidia/cuda:12.6.1-cudnn-devel-ubuntu24.04
+FROM nvidia/cuda:12.6.3-runtime-rockylinux9
 
-ENV DEBIAN_FRONTEND=noninteractive \
-    TZ=Europe/Zagreb
+
+ENV TZ=Europe/Zagreb
 
 ARG USE_PERSISTENT_DATA
-
 
 RUN mkdir -p /data && chmod -R 777 /data
 
@@ -12,7 +11,6 @@ WORKDIR /code
 COPY ./deps.sh /code/deps.sh
 COPY ./requirements.txt /code/requirements.txt
 COPY ./setup.sh /code/setup.sh
-
 
 
 # Deps install
