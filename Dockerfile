@@ -19,7 +19,7 @@ COPY ./setup/.comfyui-init /.comfyui-init
 COPY ./setup/extra_models_paths.yaml /setup/extra_models_paths.yaml
 
 # Copy
-RUN chmod +R /setup/*.sh
+RUN chmod +x /setup/*.sh
 
 # Deps
 RUN bash /setup/deps.sh
