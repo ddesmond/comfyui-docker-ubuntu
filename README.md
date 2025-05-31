@@ -1,4 +1,4 @@
-# 🤖 🌄 comfyui-docker ubuntu24
+# 🤖 🌄 comfyui-docker Rocky Linux 9
 
 
 2. **Build the Docker image**:

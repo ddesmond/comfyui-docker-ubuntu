@@ -7,6 +7,7 @@ git pull
 
 # folder setup
 cd /data
+echo "Creating folders in /data"
 mkdir -p ./models \
 && mkdir -p ./models/checkpoints/ \
 && mkdir -p ./models/vae/ \
