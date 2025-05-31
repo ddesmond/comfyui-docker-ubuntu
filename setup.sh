@@ -5,21 +5,6 @@ cd $HOME/app
 git clone https://github.com/comfyanonymous/ComfyUI .
 git pull
 
-# folder setup
-cd /data
-echo "Creating folders in /data"
-mkdir -p ./models \
-&& mkdir -p ./models/checkpoints/ \
-&& mkdir -p ./models/vae/ \
-&& mkdir -p ./models/controlnet/ \
-&& mkdir -p ./models/style_models/ \
-&& mkdir -p ./models/loras \
-&& mkdir -p ./models/controlnet/ \
-&& mkdir -p ./models/clip_vision \
-&& mkdir -p ./models/gligen/ \
-&& mkdir -p ./models/upscale_models \
-&& mkdir -p custom_nodes
-ls -la /data/
 
 cd $HOME/app
 # folders relink
@@ -35,3 +20,5 @@ cd custom_nodes
 git clone https://github.com/ltdrdata/ComfyUI-Manager comfyui-manager
 cd comfyui-manager
 pip install -r requirements.txt
+
+rm -rf /.comfyui-init

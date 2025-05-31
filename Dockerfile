@@ -13,6 +13,7 @@ COPY ./requirements.txt /code/requirements.txt
 COPY ./setup.sh /code/setup.sh
 COPY ./debug.sh /code/debug.sh
 COPY ./startup.sh /code/startup.sh
+COPY ./.comfyui-init /.comfyui-init
 
 # Copy
 RUN chmod +x /code/debug.sh
@@ -47,12 +48,11 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 # Set the working directory to /data mounted from docker compose
 WORKDIR $HOME/app
 
-# deploy comfy code
-RUN bash /code/setup.sh
-
-
 RUN echo "Done."
-
-#CMD ["python", "main.py", "--listen", "0.0.0.0", "--port", "7860", "--output-directory", "/data/"]
+ENV HF_TOKEN="" \
+    HF_ENDPOINT="https://huggingface.co" \
+    HF_HUB_ENABLE_HF_TRANSFER=true \
+    HF_HUB_ENABLE_HF_TRANSFER_NO_AUTH=true \
+    HF_HUB_DOWNLOAD_TIMEOUT=60
 
 CMD ["bash","/code/startup.sh"]
